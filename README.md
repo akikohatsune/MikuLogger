@@ -2,6 +2,10 @@
 
 [English](README.en.md) | 日本語
 
+![Miku](miku.jpg)
+
+Art by [gomya0_0](https://x.com/gomya0_0)
+
 Discord の参加/退出ログを記録するデモ用ロガーです。ログは **/activelogger** を実行したサーバーのみ有効になります。\
 **Miku playful モード**で、メッセージはかわいく軽いトーンになっています（EN/JA）。
 
