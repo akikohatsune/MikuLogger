@@ -2,6 +2,10 @@
 
 English | [日本語](README.md)
 
+![Miku](miku.jpg)
+
+Art by [gomya0_0](https://x.com/gomya0_0)
+
 A demo logger that records Discord join/leave events. Logging is enabled **only** after running **/activelogger** in a server.\
 **Miku playful mode** is enabled, so messages use a cute, light tone (EN/JA).
 
