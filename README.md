@@ -67,3 +67,6 @@ Discord Developer Portal で以下を有効にしてください。
 - `MIKU_DB`：SQLite DB パス（デフォルト `miku.db`）
 - `MIKU_ALLOWLIST`：allowlist JSON パス（デフォルト `allowlist.json`）
 - `MIKU_REPO_URL`：使用不可時に案内する URL
+
+## ライセンス
+このプロジェクトは MIT ライセンスです。利用時は MIT ライセンスの条件に従ってください。

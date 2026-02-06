@@ -67,3 +67,6 @@ Enable the following in the Discord Developer Portal:
 - `MIKU_DB`: SQLite DB path (default `miku.db`)
 - `MIKU_ALLOWLIST`: allowlist JSON path (default `allowlist.json`)
 - `MIKU_REPO_URL`: URL shown when demo is not enabled
+
+## License
+This project is licensed under the MIT License. Please comply with the MIT License terms when using it.
