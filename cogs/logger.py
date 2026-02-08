@@ -21,6 +21,23 @@ ALLOWLIST_PATH = os.getenv("MIKU_ALLOWLIST", "allowlist.json")
 REPO_URL = os.getenv("MIKU_REPO_URL", "https://github.com/yourname/MikuLogger")
 
 
+def owner_only():
+    async def predicate(ctx: commands.Context) -> bool:
+        return await ctx.bot.is_owner(ctx.author)
+
+    return commands.check(predicate)
+
+
+def app_owner_only():
+    async def predicate(interaction: discord.Interaction) -> bool:
+        bot = interaction.client
+        if isinstance(bot, commands.Bot):
+            return await bot.is_owner(interaction.user)
+        return False
+
+    return app_commands.check(predicate)
+
+
 class JoinLeaveLogger(commands.Cog):
     def __init__(self, bot: commands.Bot) -> None:
         self.bot = bot
@@ -107,8 +124,8 @@ class JoinLeaveLogger(commands.Cog):
 
     @commands.hybrid_command(name="activelogger")
     @commands.guild_only()
-    @commands.has_permissions(manage_guild=True)
-    @app_commands.checks.has_permissions(manage_guild=True)
+    @owner_only()
+    @app_owner_only()
     @app_commands.guild_only()
     async def activelogger(self, ctx: commands.Context, channel: discord.TextChannel) -> None:
         """Activate logging in this guild and set the log channel."""
@@ -121,8 +138,8 @@ class JoinLeaveLogger(commands.Cog):
 
     @commands.hybrid_command(name="inactive")
     @commands.guild_only()
-    @commands.has_permissions(manage_guild=True)
-    @app_commands.checks.has_permissions(manage_guild=True)
+    @owner_only()
+    @app_owner_only()
     @app_commands.guild_only()
     async def inactive(self, ctx: commands.Context) -> None:
         """Deactivate logging in this guild."""
@@ -137,8 +154,8 @@ class JoinLeaveLogger(commands.Cog):
 
     @commands.hybrid_command(name="showlog")
     @commands.guild_only()
-    @commands.has_permissions(manage_guild=True)
-    @app_commands.checks.has_permissions(manage_guild=True)
+    @owner_only()
+    @app_owner_only()
     @app_commands.guild_only()
     async def showlog(self, ctx: commands.Context) -> None:
         """Show current log channel and status for this guild."""
@@ -160,6 +177,8 @@ class JoinLeaveLogger(commands.Cog):
 
     @commands.hybrid_command(name="lastjoin")
     @commands.guild_only()
+    @owner_only()
+    @app_owner_only()
     @app_commands.guild_only()
     async def lastjoin(
         self, ctx: commands.Context, member: Optional[discord.Member] = None
@@ -177,6 +196,8 @@ class JoinLeaveLogger(commands.Cog):
 
     @commands.hybrid_command(name="lastout")
     @commands.guild_only()
+    @owner_only()
+    @app_owner_only()
     @app_commands.guild_only()
     async def lastout(
         self, ctx: commands.Context, member: Optional[discord.Member] = None
