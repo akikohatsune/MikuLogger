@@ -11,6 +11,7 @@ from db import (
     get_guild_settings,
     get_last_join_ts,
     get_last_out_ts,
+    init_db,
     set_active,
     set_inactive,
     set_last_join_ts,
@@ -295,4 +296,5 @@ class JoinLeaveLogger(commands.Cog):
 
 
 async def setup(bot: commands.Bot) -> None:
+    init_db()
     await bot.add_cog(JoinLeaveLogger(bot))
